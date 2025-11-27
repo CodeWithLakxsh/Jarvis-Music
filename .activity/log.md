@@ -695,3 +695,4 @@
 - 2025-11-14T18:53:21+05:30: API v2 migration
 - 2025-11-15T09:26:59+05:30: Stream decoder fix
 - 2025-11-15T11:52:49+05:30: API v2 migration
+- 2025-11-27T14:39:18+05:30: Cache layer update
