@@ -17,3 +17,4 @@
 - 2025-11-26T20:26:37+05:30: Updated playlist sync logic
 - 2025-11-26T22:00:41+05:30: Improved search functionality
 - 2025-11-27T23:13:31+05:30: Fixed streaming buffer issues
+- 2025-11-28T12:25:40+05:30: Fixed streaming buffer issues
