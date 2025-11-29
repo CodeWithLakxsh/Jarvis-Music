@@ -220,3 +220,4 @@
 - 2025-11-28T15:57:39+05:30: API v2 migration
 - 2025-11-28T23:02:33+05:30: Playlist engine rework
 - 2025-11-28T20:51:01+05:30: Stream decoder fix
+- 2025-11-29T17:57:50+05:30: Playlist engine rework
