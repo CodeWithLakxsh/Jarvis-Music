@@ -233,3 +233,4 @@
 - 2025-12-02T08:49:09+05:30: Cache layer update
 - 2025-12-06T19:55:34+05:30: Stream decoder fix
 - 2025-12-06T08:13:46+05:30: Cache layer update
+- 2025-12-06T20:43:54+05:30: Playlist engine rework
