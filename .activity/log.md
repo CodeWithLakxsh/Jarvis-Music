@@ -236,3 +236,4 @@
 - 2025-12-06T20:43:54+05:30: Playlist engine rework
 - 2025-12-06T13:17:44+05:30: Stream decoder fix
 - 2025-12-09T13:11:49+05:30: Stream decoder fix
+- 2025-12-09T11:06:17+05:30: Stream decoder fix
