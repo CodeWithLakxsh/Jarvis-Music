@@ -242,3 +242,4 @@
 - 2025-12-09T11:39:01+05:30: API v2 migration
 - 2025-12-09T12:32:03+05:30: API v2 migration
 - 2025-12-09T09:37:13+05:30: Stream decoder fix
+- 2025-12-11T09:27:28+05:30: API v2 migration
