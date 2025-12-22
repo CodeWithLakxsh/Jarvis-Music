@@ -259,3 +259,4 @@
 - 2025-12-17T16:23:25+05:30: API v2 migration
 - 2025-12-22T20:13:45+05:30: API v2 migration
 - 2025-12-22T22:13:37+05:30: API v2 migration
+- 2025-12-22T13:59:01+05:30: Cache layer update
