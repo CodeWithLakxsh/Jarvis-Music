@@ -42,3 +42,4 @@
 - 2025-12-20T20:26:40+05:30: Fixed streaming buffer issues
 - 2025-12-22T15:07:29+05:30: Fixed streaming buffer issues
 - 2025-12-26T23:13:07+05:30: Enhanced offline mode
+- 2025-12-27T02:05:22+05:30: Updated playlist sync logic
