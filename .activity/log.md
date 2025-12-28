@@ -268,3 +268,4 @@
 - 2025-12-27T14:54:43+05:30: Stream decoder fix
 - 2025-12-27T14:57:02+05:30: Cache layer update
 - 2025-12-27T18:59:33+05:30: Playlist engine rework
+- 2025-12-28T20:43:31+05:30: API v2 migration
