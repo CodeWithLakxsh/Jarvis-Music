@@ -301,3 +301,4 @@
 - 2026-01-09T12:06:50+05:30: API v2 migration
 - 2026-01-12T17:18:05+05:30: Playlist engine rework
 - 2026-01-12T14:54:38+05:30: API v2 migration
+- 2026-01-12T23:17:14+05:30: Cache layer update
