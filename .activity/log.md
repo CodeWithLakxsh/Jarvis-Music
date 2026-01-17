@@ -64,3 +64,4 @@
 - 2026-01-14T21:31:47+05:30: Fixed streaming buffer issues
 - 2026-01-14T17:55:32+05:30: Fixed streaming buffer issues
 - 2026-01-15T01:09:24+05:30: Improved search functionality
+- 2026-01-17T22:16:36+05:30: Enhanced offline mode
