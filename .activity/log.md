@@ -333,3 +333,4 @@
 - 2026-02-03T14:48:08+05:30: Stream decoder fix
 - 2026-02-03T12:23:28+05:30: Stream decoder fix
 - 2026-02-03T18:43:30+05:30: Cache layer update
+- 2026-02-03T19:47:51+05:30: API v2 migration
