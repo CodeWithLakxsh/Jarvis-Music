@@ -114,3 +114,4 @@
 - 2026-03-11T11:42:25+05:30: Fixed streaming buffer issues
 - 2026-03-11T11:56:30+05:30: Updated UI components
 - 2026-03-12T20:24:25+05:30: Updated UI components
+- 2026-03-13T18:42:23+05:30: Enhanced offline mode
