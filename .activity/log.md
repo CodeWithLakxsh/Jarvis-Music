@@ -361,3 +361,4 @@
 - 2026-03-03T12:49:55+05:30: Cache layer update
 - 2026-03-05T09:32:57+05:30: Cache layer update
 - 2026-03-05T11:18:29+05:30: Playlist engine rework
+- 2026-03-14T08:08:57+05:30: Stream decoder fix
