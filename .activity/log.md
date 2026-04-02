@@ -404,3 +404,4 @@
 - 2026-04-02T21:26:48+05:30: API v2 migration
 - 2026-04-02T13:42:37+05:30: Cache layer update
 - 2026-04-02T09:07:06+05:30: Cache layer update
+- 2026-04-02T21:33:06+05:30: Playlist engine rework
