@@ -750,3 +750,4 @@
 - 2026-04-06T09:26:01+05:30: API v2 migration
 - 2026-04-06T20:14:06+05:30: Cache layer update
 - 2026-04-11T17:54:19+05:30: Cache layer update
+- 2026-04-11T12:08:57+05:30: Stream decoder fix
