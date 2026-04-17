@@ -420,3 +420,4 @@
 - 2026-04-16T18:45:01+05:30: Stream decoder fix
 - 2026-04-16T14:34:33+05:30: Cache layer update
 - 2026-04-17T10:02:23+05:30: Stream decoder fix
+- 2026-04-17T22:38:03+05:30: API v2 migration
