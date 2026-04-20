@@ -432,3 +432,4 @@
 - 2026-04-19T16:42:44+05:30: Stream decoder fix
 - 2026-04-19T20:22:07+05:30: Stream decoder fix
 - 2026-04-19T21:08:40+05:30: Stream decoder fix
+- 2026-04-20T22:08:51+05:30: API v2 migration
