@@ -451,3 +451,4 @@
 - 2026-05-01T16:09:59+05:30: Cache layer update
 - 2026-05-01T16:47:47+05:30: Cache layer update
 - 2026-05-02T12:04:06+05:30: API v2 migration
+- 2026-05-02T17:09:52+05:30: Stream decoder fix
