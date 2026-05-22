@@ -478,3 +478,4 @@
 - 2026-05-18T12:42:14+05:30: Playlist engine rework
 - 2026-05-18T22:44:10+05:30: Stream decoder fix
 - 2026-05-18T14:41:15+05:30: Playlist engine rework
+- 2026-05-22T17:02:48+05:30: Playlist engine rework
