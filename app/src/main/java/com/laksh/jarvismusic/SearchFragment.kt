@@ -11,13 +11,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import com.laksh.jarvismusic.api.ApiSong
 import com.laksh.jarvismusic.api.RetrofitInstance
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -71,32 +69,27 @@ class SearchFragment : Fragment() {
     private fun performSearch(query: String) {
         rvResults.layoutManager = LinearLayoutManager(requireContext())
 
-        // Ensure the interface Call<List<ApiSong>> matches this implementation
-        RetrofitInstance.api.searchSongs(query, 20).enqueue(object : Callback<List<ApiSong>> {
-            override fun onResponse(call: Call<List<ApiSong>>, response: Response<List<ApiSong>>) {
-                if (!isAdded) return
+        // 🔥 FIX: Coroutine instead of .enqueue()
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                // Call the API directly
+                val songs = RetrofitInstance.api.searchSongs(query, 20)
 
-                if (response.isSuccessful) {
-                    val songs = response.body()
+                if (isAdded) {
                     if (!songs.isNullOrEmpty()) {
                         rvResults.adapter = SongAdapter(songs) { clickedSong ->
-                            // Correctly passes the clicked song and the full list for the queue
                             (activity as? MainActivity)?.setQueueAndPlay(clickedSong, songs)
                         }
                     } else {
                         Toast.makeText(requireContext(), "No results found", Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    Toast.makeText(requireContext(), "Server error: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
-            }
-
-            override fun onFailure(call: Call<List<ApiSong>>, t: Throwable) {
+            } catch (e: Exception) {
                 if (isAdded) {
-                    Toast.makeText(requireContext(), "Network Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Network Error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
     }
 
     private fun saveSearchQuery(query: String) {

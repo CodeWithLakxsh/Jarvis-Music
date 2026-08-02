@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a bug in JARVIS Music
+title: "[Bug]: "
+labels: [bug]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for taking the time to report a bug! Please fill in as much detail as you can."
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What happened, and what did you expect to happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the app
+        2. Search for "..."
+        3. Tap a song
+        4. See error
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device & Android version
+      description: e.g. Pixel 9 Pro, Android 15
+  - type: input
+    id: app_version
+    attributes:
+      label: App / build version
+      description: e.g. versionName 1.0, or the APK/commit used
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Android app
+        - Backend API
+        - Build / Gradle
+        - Other
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Paste any relevant logcat output or attach screenshots.

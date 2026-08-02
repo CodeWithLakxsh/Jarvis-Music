@@ -343,36 +343,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun autoGenerateInfiniteSongs(forcePlayNext: Boolean = false) {
+        // 1. Prevent multiple requests from running at once
         if (isAutoGenerating) return
         isAutoGenerating = true
 
         val radioMix = listOf("Trending", "Top 50", "Viral", "Hits", currentArtistName ?: "Latest")
         val randomSearch = radioMix.random()
 
-        // 🔥 FIX: Explicitly request 20 results for infinite queue
-        RetrofitInstance.api.searchSongs(randomSearch, 20).enqueue(object : Callback<List<ApiSong>> {
-            override fun onResponse(call: Call<List<ApiSong>>, response: Response<List<ApiSong>>) {
-                isAutoGenerating = false
-                if (response.isSuccessful) {
-                    val newSongs = response.body()
-                    if (!newSongs.isNullOrEmpty()) {
-                        val uniqueSongs = newSongs.filter { newItem ->
-                            playbackQueue.none { existing -> existing.id == newItem.id }
-                        }.shuffled()
+        // 2. Use lifecycleScope to run the API call on the background thread
+        lifecycleScope.launch {
+            try {
+                // 3. Call the API directly (No .enqueue needed for suspend functions)
+                val newSongs = RetrofitInstance.api.searchSongs(randomSearch, 20)
 
-                        playbackQueue.addAll(uniqueSongs)
+                // 4. Handle the result
+                if (!newSongs.isNullOrEmpty()) {
+                    val uniqueSongs = newSongs.filter { newItem ->
+                        playbackQueue.none { existing -> existing.id == newItem.id }
+                    }.shuffled()
 
-                        if (forcePlayNext && uniqueSongs.isNotEmpty()) {
-                            currentSongIndex++
-                            playSong(playbackQueue[currentSongIndex])
-                        }
+                    playbackQueue.addAll(uniqueSongs)
+
+                    if (forcePlayNext && uniqueSongs.isNotEmpty()) {
+                        currentSongIndex++
+                        playSong(playbackQueue[currentSongIndex])
                     }
                 }
-            }
-            override fun onFailure(call: Call<List<ApiSong>>, t: Throwable) {
+            } catch (e: Exception) {
+                // 5. Handle any network or parsing errors safely
+                Log.e("API_ERROR", "Auto-gen failed: ${e.message}")
+            } finally {
+                // 6. 🔥 IMPORTANT: Always reset this flag, even if the request fails,
+                // otherwise your app will never fetch new songs again.
                 isAutoGenerating = false
             }
-        })
+        }
     }
 
     private fun showQueueBottomSheet() {

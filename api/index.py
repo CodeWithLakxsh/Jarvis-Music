@@ -1,11 +1,12 @@
 from flask import Flask, request, redirect, jsonify
 import jiosaavn
 import os
+import secrets
 from traceback import print_exc
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET", 'thankyoutonystark#weloveyou3000')
+app.secret_key = os.environ.get("SECRET", secrets.token_hex(32))
 CORS(app)
 
 def ensure_list(data):

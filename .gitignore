@@ -1,15 +1,67 @@
+# =========================================================
+# JARVIS Music - .gitignore
+# Generated for: Android (Kotlin/Gradle) + Python (Flask) API
+# =========================================================
+
+# ---------- Android / Gradle ----------
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.gradle/
+**/build/
 local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.aa
+*.ap_
+*.dm
+*.jks
+*.keystore
+
+# ---------- Kotlin ----------
+.kotlin/
+
+# ---------- Python (api/) ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# ---------- Environment / Secrets ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# ---------- IDE ----------
+.idea/
+.vscode/
+*.hprof
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Logs / Caches / Temp ----------
+*.log
+npm-debug.log*
+*.tmp
+*~
+#*#
+*.swp
+*.swo
+
+# ---------- Release / Generated output ----------
+release/
+output-metadata.json

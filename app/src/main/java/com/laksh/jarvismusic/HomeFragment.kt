@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope // Required for Coroutines
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.laksh.jarvismusic.api.ApiSong
 import com.laksh.jarvismusic.api.RetrofitInstance
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.launch // Required for Coroutines
 
 class HomeFragment : Fragment() {
 
@@ -51,39 +49,35 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchSection(query: String, recyclerView: RecyclerView, isGrid: Boolean) {
-        // 🔥 FIX: Explicitly request 20 results for each section
-        RetrofitInstance.api.searchSongs(query, 20).enqueue(object : Callback<List<ApiSong>> {
-            override fun onResponse(call: Call<List<ApiSong>>, response: Response<List<ApiSong>>) {
-                if (isAdded) {
-                    if (response.isSuccessful) {
-                        val songs = response.body()
-                        if (!songs.isNullOrEmpty()) {
-                            val shuffledSongs = songs.shuffled()
+        // 🔥 FIX: Use Coroutines instead of .enqueue()
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                // Execute network call on background thread automatically
+                val songs = RetrofitInstance.api.searchSongs(query, 20)
 
-                            recyclerView.adapter = if (isGrid) {
-                                SongAdapter(shuffledSongs) { clickedSong ->
-                                    (activity as? MainActivity)?.setQueueAndPlay(clickedSong, shuffledSongs)
-                                }
-                            } else {
-                                HomeRowAdapter(shuffledSongs) { clickedSong ->
-                                    (activity as? MainActivity)?.setQueueAndPlay(clickedSong, shuffledSongs)
-                                }
-                            }
+                if (isAdded && !songs.isNullOrEmpty()) {
+                    val shuffledSongs = songs.shuffled()
+
+                    recyclerView.adapter = if (isGrid) {
+                        SongAdapter(shuffledSongs) { clickedSong ->
+                            (activity as? MainActivity)?.setQueueAndPlay(clickedSong, shuffledSongs)
                         }
                     } else {
-                        Log.e("API_DEBUG", "Query '$query' failed with code: ${response.code()}")
+                        HomeRowAdapter(shuffledSongs) { clickedSong ->
+                            (activity as? MainActivity)?.setQueueAndPlay(clickedSong, shuffledSongs)
+                        }
                     }
-                    decrementRequestCount()
                 }
-            }
-
-            override fun onFailure(call: Call<List<ApiSong>>, t: Throwable) {
+            } catch (e: Exception) {
+                // Handle network failure here
+                Log.e("API_DEBUG", "Network failure for '$query': ${e.message}")
+            } finally {
+                // Ensure the progress bar logic runs even if the request fails
                 if (isAdded) {
-                    Log.e("API_DEBUG", "Network failure for '$query': ${t.message}")
                     decrementRequestCount()
                 }
             }
-        })
+        }
     }
 
     private fun decrementRequestCount() {
