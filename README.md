@@ -10,12 +10,21 @@
 [![Target SDK](https://img.shields.io/badge/targetSdk-35-blue)](#)
 [![Media](https://img.shields.io/badge/Player-Media3%20%2F%20ExoPlayer-orange)](#)
 [![Backend](https://img.shields.io/badge/API-Python%20Flask-lightgrey)](#)
+[![Release](https://img.shields.io/github/v/release/CodeWithLakxsh/jarvis-music)](https://github.com/CodeWithLakxsh/jarvis-music/releases/latest)
 
 *Built by [CodeWithLakxsh](https://github.com/CodeWithLakxsh)*
 
 </div>
 
 ---
+
+## 📦 Download
+
+Get the latest signed APK from the [Releases page](https://github.com/CodeWithLakxsh/jarvis-music/releases/latest):
+
+[![Download APK](https://img.shields.io/badge/Download-JARVIS%20Music%20v1.0.0%20APK-1DB954)](https://github.com/CodeWithLakxsh/jarvis-music/releases/latest)
+
+Prefer to build it yourself? Skip ahead to [Installation](#installation) → **Build from source**.
 
 ## Overview
 
@@ -108,9 +117,17 @@ JarvisMusic/
 
 ## Installation
 
-> Commands below are derived from the project's configuration and source, and were **not** executed during this publication.
+You can either **download a pre-built APK** or **build from source**.
 
-### Android app
+### Download APK
+
+1. Download the latest APK from the [Releases page](https://github.com/CodeWithLakxsh/jarvis-music/releases/latest).
+2. Open the APK on your Android device (Android 7.0 / API 24+).
+3. If prompted, allow **"Install unknown apps"** for your browser or file manager, then tap **Install**.
+
+### Build from source
+
+> Commands below are derived from the project's configuration and source.
 
 ```bash
 # Clone the repository
