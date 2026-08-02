@@ -791,3 +791,4 @@
 - 2026-07-28T22:49:44+05:30: Playlist engine rework
 - 2026-07-28T19:14:58+05:30: API v2 migration
 - 2026-07-28T20:06:04+05:30: Playlist engine rework
+- 2026-08-02T22:04:26+05:30: Stream decoder fix
