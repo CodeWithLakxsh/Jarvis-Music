@@ -818,3 +818,4 @@
 - 2026-08-24T14:55:05+05:30: Cache layer update
 - 2026-08-25T14:55:58+05:30: Cache layer update
 - 2026-08-25T17:57:12+05:30: API v2 migration
+- 2026-08-25T13:51:09+05:30: Stream decoder fix
