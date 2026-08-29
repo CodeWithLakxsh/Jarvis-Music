@@ -588,3 +588,4 @@
 - 2026-08-29T14:39:41+05:30: Cache layer update
 - 2026-08-29T16:50:29+05:30: Stream decoder fix
 - 2026-08-29T16:03:11+05:30: Stream decoder fix
+- 2026-08-29T22:02:02+05:30: Stream decoder fix
