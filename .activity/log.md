@@ -280,3 +280,4 @@
 - 2026-08-27T13:23:02+05:30: Fixed streaming buffer issues
 - 2026-08-28T09:17:57+05:30: Updated UI components
 - 2026-08-31T11:04:18+05:30: Improved search functionality
+- 2026-08-31T16:06:31+05:30: Enhanced offline mode
