@@ -38,17 +38,17 @@ The app is a flagship piece of the **JARVIS ecosystem** — a family of projects
 
 All features below are verified directly from the source code:
 
-- **Search & stream** — search JioSaavn songs via the bundled API (`Retrofit` + `Result` endpoint), stream with **Media3 / ExoPlayer**.
-- **Home dashboard** — trending/mix sections (Hindi, Punjabi, Hip-Hop, Pop, etc.) rendered as a grid and horizontal rows.
-- **Mini + full player** — bottom-sheet player with album art, seek bar, and controls (play/pause, next/prev).
-- **Infinite queue** — when the queue runs low, new songs are auto-fetched and appended; shuffle & repeat modes included.
-- **Liked songs** — heart any track; saved locally in **Room**.
-- **Offline downloads** — download songs via Android `DownloadManager` to the app's external music folder; play them back offline.
-- **Playlists** — create playlists, add songs, and play them back.
-- **Search history** — recent queries saved with `SharedPreferences`.
-- **Onboarding** — pick favourite artists on first launch.
-- **Artist profiles** — open an artist's top tracks from search results.
-- **Dark theme** — always-on dark UI with a Spotify-green accent (`#1DB954`).
+- **Spotify-style UI** — dark theme, gradient Home header, filter chips, 2-column "recently played" grid, carousels, round artist bubbles, colourful "Browse all" genre tiles and playlist-style pages with a big cover and green play button.
+- **Search & stream** — search-as-you-type against the bundled JioSaavn API, a "Top result" card, and recent searches you can remove one by one or clear.
+- **Home dashboard** — greeting, "Jump back in", "Your top mixes" (built from the artists you picked), trending/romantic/party/chill rows and language filters (Hindi, Punjabi, English, Haryanvi). Pull to refresh.
+- **Mini + full player** — floating mini player tinted with the album colour (with like button and progress line), full-screen player with album-colour gradient, seek bar with elapsed/remaining time, shuffle, repeat (off / all / one), like, download, share and queue.
+- **Change songs your way** — swipe the mini player or the album art left/right to skip, tap "previous" to restart the song (or go back within 3 seconds).
+- **Queue** — see what's playing and what's next, tap a song to jump to it, drag to reorder, swipe to remove. "Play next" and "Add to queue" from any song.
+- **Song menu (⋮)** on every song — like, add to playlist, remove from playlist, play next, add to queue, download / remove download, go to artist, share.
+- **Background playback** — playback runs in a Media3 `MediaSessionService` with a media notification, lock-screen, Bluetooth and headset controls; pauses when headphones are unplugged.
+- **Autoplay** — when the queue runs out, similar songs are added automatically.
+- **Liked songs, playlists, downloads** — liked songs (newest first) and playlists stored in **Room**; create, rename and delete playlists; offline downloads via `DownloadManager` that keep title/artist/artwork and play from the local file.
+- **Onboarding** — pick favourite artists on first launch; they power your Home mixes and Library.
 
 ## Tech Stack
 
@@ -56,7 +56,7 @@ All features below are verified directly from the source code:
 |---|---|
 | Language | [Kotlin](https://kotlinlang.org/) |
 | UI | Android Jetpack (AppCompat, Material Components, ViewBinding, ConstraintLayout) |
-| Media | [Media3 / ExoPlayer](https://developer.android.com/media/media3) |
+| Media | [Media3 / ExoPlayer + MediaSession](https://developer.android.com/media/media3) |
 | Networking | [Retrofit 2](https://square.github.io/retrofit/) + Gson, [OkHttp](https://square.github.io/okhttp/) |
 | Image loading | [Glide](https://github.com/bumptech/glide) |
 | Local storage | [Room](https://developer.android.com/training/data-storage/room) |
@@ -86,16 +86,18 @@ JarvisMusic/
 ├── app/                          # Android application module
 │   └── src/main/
 │       ├── java/com/laksh/jarvismusic/
-│       │   ├── MainActivity.kt   # Player host, queue, mini/full player
-│       │   ├── HomeFragment.kt   # Dashboard sections
-│       │   ├── SearchFragment.kt # Search + history
-│       │   ├── LibraryFragment.kt# Liked / Downloads / Playlists
+│       │   ├── MainActivity.kt       # Tabs, mini/full player, queue & song menus
+│       │   ├── PlaybackService.kt    # Media3 session service (background playback)
+│       │   ├── HomeFragment.kt       # Home: greeting, grid, mixes, carousels
+│       │   ├── SearchFragment.kt     # Browse all, recent searches, results
+│       │   ├── LibraryFragment.kt    # Your Library (liked, downloads, playlists, artists)
+│       │   ├── CollectionFragment.kt # Playlist-style page (liked, downloads, playlists, artists, genres)
 │       │   ├── OnboardingActivity.kt
-│       │   ├── ArtistProfileActivity.kt
-│       │   ├── PlaylistsActivity.kt / PlaylistDetailsActivity.kt
-│       │   ├── LikedSongsActivity.kt / DownloadedSongsActivity.kt
-│       │   ├── api/              # Retrofit, Room entities & DAOs
-│       │   └── *Adapter.kt       # RecyclerView adapters
+│       │   ├── DownloadStore.kt      # Offline downloads + metadata
+│       │   ├── LocalStore.kt         # Recents, search history, shared player state
+│       │   ├── SongUtils.kt / UiUtils.kt
+│       │   ├── api/                  # Retrofit, Room entities & DAOs
+│       │   └── *Adapter*.kt          # RecyclerView adapters
 │       └── res/                  # Layouts, drawables, themes, menus
 ├── api/                          # Self-hostable JioSaavn API (Python/Flask)
 │   ├── index.py                  # Flask entry point (port 5100)
@@ -161,9 +163,11 @@ See [`api/.env.example`](api/.env.example) for the backend environment template.
 ## Usage
 
 - On first launch, choose at least **3 artists** to personalise your library.
-- Use **Home** to browse sections, **Search** to find any song, and **Library** to access liked songs, downloads, and playlists.
-- Tap a song to start playback; swipe the player sheet up for the full player with queue, shuffle, and repeat.
-- Tap the heart to like a song, the download icon to save it offline.
+- Use **Home** to browse sections, **Search** to find any song or browse genres, and **Your Library** to open liked songs, downloads, playlists and artists.
+- Tap a song to start playback. Swipe the mini player (or the album art in the full player) left/right to change songs; tap it or swipe up for the full player.
+- Tap **⋮** on any song for play next, add to queue, add to playlist, download, go to artist and share. Open the queue from the full player to jump to, reorder or remove songs.
+- Tap the heart to like a song, the download icon to save it offline. Long-press a playlist in Your Library (or use **⋯** on its page) to rename or delete it.
+- Music keeps playing in the background — control it from the notification or lock screen.
 
 ## Build
 

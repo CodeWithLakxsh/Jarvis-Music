@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_height="64dp"
+    android:background="@color/sheet_bg"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingEnd="4dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_queue_art"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+        app:shapeAppearanceOverlay="@style/RoundedSmall" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginStart="12dp"
-        android:layout_toEndOf="@id/img_queue_art"
-        android:layout_toStartOf="@id/btn_remove_queue"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_queue_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Song Title"
-            android:textColor="#FFFFFF"
+            android:singleLine="true"
+            android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_queue_artist"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Artist Name"
-            android:textColor="#B3B3B3"
-            android:textSize="14sp" />
+            android:singleLine="true"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/btn_remove_queue"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:padding="10dp"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
-        app:tint="#B3B3B3" />
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Remove from queue"
+        android:padding="12dp"
+        android:src="@drawable/ic_remove_circle"
+        app:tint="@color/text_secondary" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/img_drag_handle"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:contentDescription="Drag to reorder"
+        android:padding="10dp"
+        android:src="@drawable/ic_drag_handle"
+        app:tint="@color/text_secondary" />
+</LinearLayout>

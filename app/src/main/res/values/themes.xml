@@ -1,24 +1,113 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <style name="Theme.JarvisMusic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#FFFFFF</item>
-        <item name="colorPrimaryVariant">#121212</item>
-        <item name="colorOnPrimary">#000000</item>
+    <!-- Always-dark app theme -->
+    <style name="Theme.JarvisMusic" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/spotify_green</item>
+        <item name="colorPrimaryVariant">@color/bg_base</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/spotify_green</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSurface">@color/sheet_bg</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorAccent">@color/spotify_green</item>
+        <item name="colorControlActivated">@color/spotify_green</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
 
-        <item name="colorSecondary">#B3B3B3</item>
-
-        <item name="android:statusBarColor">#030303</item>
-        <item name="android:windowBackground">#030303</item>
-        <item name="android:navigationBarColor">#030303</item>
-
+        <item name="android:windowBackground">@color/bg_base</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/black</item>
         <item name="android:windowLightStatusBar">false</item>
 
-        <item name="shapeAppearanceOverlay">@style/CircleImage</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.JarvisMusic.BottomSheetDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.JarvisMusic.AlertDialog</item>
     </style>
 
+    <style name="ThemeOverlay.JarvisMusic.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.JarvisMusic.BottomSheet</item>
+        <item name="android:navigationBarColor">@color/sheet_bg</item>
+    </style>
+
+    <style name="Widget.JarvisMusic.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@color/sheet_bg</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.JarvisMusic.SheetTop</item>
+    </style>
+
+    <style name="ShapeAppearance.JarvisMusic.SheetTop" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.JarvisMusic.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/spotify_green</item>
+        <item name="colorSurface">@color/sheet_bg</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.JarvisMusic.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.JarvisMusic.DialogButton.Muted</item>
+    </style>
+
+    <style name="Widget.JarvisMusic.DialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/spotify_green</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.JarvisMusic.DialogButton.Muted">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Filter chips (Home / Library) -->
+    <style name="Widget.JarvisMusic.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_background</item>
+        <item name="android:textColor">@color/chip_text</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipCornerRadius">16dp</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="rippleColor">@color/bg_press</item>
+    </style>
+
+    <!-- Text styles -->
+    <style name="TextAppearance.JarvisMusic.PageTitle" parent="">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.JarvisMusic.SectionTitle" parent="">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.JarvisMusic.NavLabel" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <!-- Shapes -->
     <style name="RoundedSquare">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="RoundedSmall">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="ShapeAppearance.JarvisMusic.TileStart" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">6dp</item>
+        <item name="cornerSizeBottomLeft">6dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
     <style name="CircleImage">

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Liked Songs cover: purple to mint, like Spotify -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:angle="315"
+        android:startColor="#FF450AF5"
+        android:centerColor="#FF8E8EE5"
+        android:endColor="#FFC4EFD9" />
+</shape>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Space kept free under scrolling content for the mini player + bottom nav -->
+    <dimen name="list_bottom_padding">180dp</dimen>
+    <dimen name="mini_player_height">56dp</dimen>
+    <dimen name="screen_padding">16dp</dimen>
+</resources>
