@@ -53,6 +53,9 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
 
     // Lifecycle (Crucial for handling UI states and Room)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
@@ -64,9 +67,11 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // 3. The Modern Media Engine (Media3 / ExoPlayer)
-    implementation("androidx.media3:media3-exoplayer:1.2.0")
-    implementation("androidx.media3:media3-ui:1.2.0")
-    implementation("androidx.media3:media3-common:1.2.0")
+    // media3-session powers background playback, the media notification and lock-screen controls
+    val media3Version = "1.4.1"
+    implementation("androidx.media3:media3-exoplayer:$media3Version")
+    implementation("androidx.media3:media3-session:$media3Version")
+    implementation("androidx.media3:media3-common:$media3Version")
 
     // 4. Image Loader (Glide)
     implementation("com.github.bumptech.glide:glide:4.16.0")

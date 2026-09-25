@@ -1,37 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboarding_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
-    android:padding="20dp">
+    android:background="@color/bg_base"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp">
 
     <TextView
         android:id="@+id/tv_onboarding_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose 3 Languages"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
+        android:layout_marginTop="24dp"
+        android:text="Choose 3 or more artists you like."
+        android:textColor="@color/text_primary"
+        android:textSize="24sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="We'll use them to build your Home."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_onboarding"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/btn_next_onboarding"
-        android:layout_below="@id/tv_onboarding_title"
-        android:layout_marginTop="20dp" />
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next_onboarding"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:text="NEXT (0/3)"
-        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.5"
+        android:paddingHorizontal="40dp"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:backgroundTint="#1DB954"
-        app:cornerRadius="30dp" />
+        app:backgroundTint="@color/white"
+        app:cornerRadius="26dp" />
 
-</RelativeLayout>
+</LinearLayout>

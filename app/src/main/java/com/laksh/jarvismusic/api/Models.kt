@@ -2,8 +2,7 @@ package com.laksh.jarvismusic.api
 
 import com.google.gson.annotations.SerializedName
 
-// Since the API now returns a direct List [{}, {}, {}],
-// we only need the class representing a single song.
+// The API returns a direct List [{}, {}, {}] of songs.
 data class ApiSong(
     @SerializedName("id")
     val id: String?,
@@ -21,5 +20,11 @@ data class ApiSong(
     val media_url: String?,
 
     @SerializedName("album")
-    val album: String?
+    val album: String?,
+
+    @SerializedName("perma_url")
+    val perma_url: String? = null,
+
+    @SerializedName("duration")
+    val duration: String? = null
 )

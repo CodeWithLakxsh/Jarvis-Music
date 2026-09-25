@@ -3,6 +3,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +20,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,25 +33,14 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".LikedSongsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".DownloadedSongsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".PlaylistsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".PlaylistDetailsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ArtistProfileActivity"
-            android:exported="false" />
+        <service
+            android:name=".PlaybackService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service>
 
     </application>
 </manifest>
