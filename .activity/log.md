@@ -653,3 +653,4 @@
 - 2026-10-25T10:13:43+05:30: API v2 migration
 - 2026-10-25T12:26:49+05:30: Stream decoder fix
 - 2026-10-25T18:34:03+05:30: API v2 migration
+- 2026-10-25T15:31:17+05:30: API v2 migration
