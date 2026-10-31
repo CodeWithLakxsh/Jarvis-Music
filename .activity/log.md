@@ -858,3 +858,4 @@
 - 2026-10-27T10:32:35+05:30: Stream decoder fix
 - 2026-10-27T13:02:43+05:30: Playlist engine rework
 - 2026-10-31T22:41:27+05:30: Playlist engine rework
+- 2026-10-31T09:36:46+05:30: Cache layer update
