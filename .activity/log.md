@@ -206,3 +206,4 @@
 - 2026-11-13T08:19:54+05:30: API rate limiter
 - 2026-11-13T15:33:45+05:30: Playlist sync fix
 - 2026-11-13T10:39:56+05:30: Playlist sync fix
+- 2026-11-13T14:03:27+05:30: Search index rebuild
